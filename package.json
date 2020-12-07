@@ -1,0 +1,19 @@
+{
+  "name": "mssystem",
+  "version": "1.0.0",
+  "description": "messaging system",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "md5": "^2.3.0",
+    "sequelize": "^6.3.5",
+    "sqlite3": "^5.0.0",
+    "twilio": "^3.53.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
