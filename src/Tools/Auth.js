@@ -3,9 +3,18 @@ const { v4 } = require('uuid')
 const Login = require('../Models/Login')
 const Session = require('../Models/Session')
 
-const CheckSession = () => {
-    return new Promise((resolve, reject) => {
-        
+const CheckSession = (param) => {
+    return new Promise(async(resolve, reject) => {
+        try {
+            Session.sync()
+            var session = await Session.findOne({
+                where: {
+                    session: param.session, 
+                    user_id: param.userid
+                }
+            })
+            resolve(session)
+        } catch(e) {reject(e)}
     })
 }
 
@@ -69,6 +78,7 @@ const SignUp = (param) => {
 
 module.exports = {
     SignUp, 
-    LogIn
+    LogIn, 
+    CheckSession
 }
 

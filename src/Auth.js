@@ -14,8 +14,8 @@ auth.post('/api/1/sms', (req, res) => {
     var arrayOfNumbers = numbers.toString().split(",")
     sendToNumbers(arrayOfNumbers, message)
     res.status(200).send({
-        "code" : 200, 
-        "messages": "all messages are sent"
+        code : 200, 
+        messages: "all messages are sent"
     })
 })
 
