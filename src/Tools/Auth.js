@@ -14,7 +14,9 @@ const CreateSession = (parm) => {
         Session.sync()
         Session.create({
             session: v4(), 
-            user_id: parm.uid
+            user_id: parm.uid, 
+            active: true, 
+            divice: "desktop"
         })
         .then((sid) => {
             resolve(sid)
@@ -35,6 +37,7 @@ const LogIn = (param) => {
                     password: md5(param.pass).toString()
                 }
             })
+            console.log(login)
             var parm = {uid : login[0].id}
             var session = await CreateSession(parm)
             resolve(session)

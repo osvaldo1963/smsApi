@@ -14,7 +14,10 @@ const Session = Conection.define("Session", {
         type: DataTypes.BOOLEAN, 
         allowNull: false
     }, 
-    divice: {}
+    divice: {
+        type: DataTypes.STRING, 
+        allowNull: false, 
+    }
 }, {
     underscored: true,
     timestamps: false,
