@@ -62,6 +62,7 @@ const SignUp = (param) => {
                 firstname    : param.name,       //<<< parameter required
                 lastname     : param.lastname,   //<<< parameter required
                 email        : param.email,      //<<< parameter required
+                phone        : param.phone,
                 password     : md5(param.pass),  //<<< parameter required
                 program_id   : param.programid,    //<<< parameter required
                 department_id: param.departmentid, //<<< parameter required
