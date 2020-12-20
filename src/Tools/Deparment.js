@@ -3,7 +3,7 @@ const Deparments = require('../Models/Deparments')
 const { CheckSession } = require('./Auth')
 
 const FetchDeparment = (param) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async(resolve, reject) => {
         try {
             Department.sync()
             var paramenters = {

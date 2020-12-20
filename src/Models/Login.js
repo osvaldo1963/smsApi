@@ -18,11 +18,11 @@ const Login = Conection.define("Login", {
         type: DataTypes.STRING, 
         allowNull: false
     }, 
-    program: {
-        type: DataTypes.STRING, 
+    program_id: {
+        type: DataTypes.INTEGER, 
     }, 
-    department: {
-        type: DataTypes.STRING,
+    department_id: {
+        type: DataTypes.INTEGER,
     }, 
     type: {
         type: DataTypes.STRING

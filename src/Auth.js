@@ -22,13 +22,13 @@ auth.post('/api/1/sms', (req, res) => {
 auth.post('/api/1/register', (req, res) => {
     var query = req.query
     var param = {
-        name      : query.name,       //<<< parameter required
-        lastname  : query.lastname,   //<<< parameter required
-        email     : query.email,      //<<< parameter required
-        pass      : query.pass,  //<<< parameter required
-        program   : query.program,    //<<< parameter required
-        department: query.department, //<<< parameter required
-        type      : query.type        //<<< parameter required
+        name        : query.name,       //<<< parameter required
+        lastname    : query.lastname,   //<<< parameter required
+        email       : query.email,      //<<< parameter required
+        pass        : query.pass,  //<<< parameter required
+        programid   : query.program,    //<<< parameter required
+        departmentid: query.department, //<<< parameter required
+        type        : query.type        //<<< parameter required
     }
     SignUp(param)
     .then((user) => {
