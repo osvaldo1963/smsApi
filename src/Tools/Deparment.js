@@ -1,7 +1,18 @@
 const Department = require('../Models/Deparments')
-const Deparments = require('../Models/Deparments')
 const { CheckSession } = require('./Auth')
 
+const FetchDepartmentyId = (param) => {
+    return new Promise(async(resolve, reject) => {
+        try {
+            var deparments = await Department.findOne({
+                where: {
+                    id: param.id
+                }
+            })
+            resolve(deparments)
+        } catch(error) { reject(error) }
+    })
+}
 const FetchDeparment = (param) => {
     return new Promise(async(resolve, reject) => {
         try {
@@ -43,5 +54,6 @@ const CreateDeparment = (param) => {
 
 module.exports = {
     FetchDeparment, 
-    CreateDeparment
+    CreateDeparment, 
+    FetchDepartmentyId
 }

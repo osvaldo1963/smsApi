@@ -1,6 +1,18 @@
 const Program = require('../Models/Program')
 const { CheckSession } = require('./Auth')
 
+const FetchProgrambyId = (param) => {
+    return new Promise(async(resolve, reject) => {
+        try {
+            var programs = await Program.findOne({
+                where: {
+                    id: param.id
+                }
+            })
+            resolve(programs)
+        } catch(error) { reject(error) }
+    })
+}
 const FetchPrograms = (param) => {
     return new Promise(async(resolve, reject) => {
         try {
@@ -38,5 +50,6 @@ const CreateProgram = (param) => {
 
 module.exports = {
     FetchPrograms, 
-    CreateProgram
+    CreateProgram, 
+    FetchProgrambyId
 }
