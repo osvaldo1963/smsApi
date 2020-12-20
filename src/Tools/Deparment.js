@@ -22,11 +22,7 @@ const FetchDeparment = (param) => {
                 userid: param.userid
             }
             await CheckSession(paramenters)
-            var deparmnts = await Department.findAll({
-                where: {
-                    program_id: param.programid
-                }
-            })
+            var deparmnts = await Department.findAll()
             resolve(deparmnts)
         } catch(error) { reject(error) }
     })

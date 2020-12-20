@@ -28,12 +28,11 @@ department.post('/api/1/deparment/create', (req, res) =>{
     })
 })
 
-department.post('/api/1/deparment/fetch', (req, res) =>{
+department.post('/api/1/deparment/byid', (req, res) =>{
     var query = req.query
     var paramenters = {
         session: query.session, 
         userid: query.userid,
-        programid: query.programid
     }
     FetchDeparment(paramenters)
     .then((deparment) => {

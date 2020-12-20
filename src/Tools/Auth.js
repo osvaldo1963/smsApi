@@ -57,7 +57,8 @@ const LogIn = (param) => {
 const SignUp = (param) => {
     return new Promise(async(resolve, reject) => {
         try {
-            Login.sync({alter: true})
+            await Login.sync({alter: true})
+            
             var newUser = await Login.create({
                 firstname    : param.name,       //<<< parameter required
                 lastname     : param.lastname,   //<<< parameter required
