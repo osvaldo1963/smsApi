@@ -68,9 +68,10 @@ const SignUp = (param) => {
                 department_id: param.departmentid, //<<< parameter required
                 type         : param.type    
             }
-            if(datain.pass != undefined) {
-                datain["password"] = param.pass
+            if(param.pass) {
+                datain["password"] = md5(param.pass)
             }
+            console.log(datain)
             var newUser = await Login.create(datain) 
             var parm = {uid : newUser.id}
             var session = await CreateSession(parm)

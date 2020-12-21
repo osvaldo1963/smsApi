@@ -10,9 +10,9 @@ const { SignUp, LogIn } = require('./Tools/Auth')
 auth.post('/api/1/sms', (req, res) => {
     var numbers = req.query.numbers //<<< parameter required
     var message = req.query.message //<<< parameter require
-
+    var param   = {session: req.query.session, userid: req.query.userid}
     var arrayOfNumbers = numbers.toString().split(",")
-    sendToNumbers(arrayOfNumbers, message)
+    sendToNumbers(arrayOfNumbers, message, param)
     res.status(200).send({
         code : 200, 
         messages: "all messages are sent"
@@ -32,7 +32,7 @@ auth.post('/api/1/user/register', (req, res) => {
         type        : query.type        //<<< parameter required
     }
     console.log(query.pass)
-    if(query.pass != undefined) {
+    if(query.pass) {
         param["pass"] = query.pass
     }
     console.log(param)
