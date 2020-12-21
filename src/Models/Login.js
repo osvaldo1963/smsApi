@@ -20,7 +20,8 @@ const Login = Conection.define("Login", {
     },
     password: {
         type: DataTypes.STRING, 
-        allowNull: false
+        allowNull: true, 
+        defaultValue: "none"
     }, 
     program_id: {
         type: DataTypes.INTEGER, 

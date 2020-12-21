@@ -58,17 +58,20 @@ const SignUp = (param) => {
     return new Promise(async(resolve, reject) => {
         try {
             await Login.sync({alter: true})
-            
-            var newUser = await Login.create({
+            var datain = {
                 firstname    : param.name,       //<<< parameter required
                 lastname     : param.lastname,   //<<< parameter required
                 email        : param.email,      //<<< parameter required
                 phone        : param.phone,
-                password     : md5(param.pass),  //<<< parameter required
+                //password     : md5(param.pass),  //<<< parameter required
                 program_id   : param.programid,    //<<< parameter required
                 department_id: param.departmentid, //<<< parameter required
                 type         : param.type    
-            }) 
+            }
+            if(datain.pass != undefined) {
+                datain["password"] = param.pass
+            }
+            var newUser = await Login.create(datain) 
             var parm = {uid : newUser.id}
             var session = await CreateSession(parm)
             resolve({newUser, session})

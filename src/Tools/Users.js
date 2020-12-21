@@ -1,8 +1,8 @@
 const Login = require('../Models/Login')
 const { Op } = require('sequelize')
 const { FetchDepartmentyId } = require('./Deparment')
-const  { FetchProgrambyId } = require('./Program')
-
+const { FetchProgrambyId } = require('./Program')
+const { CheckSession } = require('./Auth')
 const searchUserBy = (param) => {
     return new Promise(async(resolve, reject) => {
         try {
@@ -34,7 +34,21 @@ const searchUserBy = (param) => {
         } catch(error) { reject(error) }
     })
 }
-
+const deleteById = (param) => {
+    return new Promise(async(resolve, reject) => {
+        try {
+            await CheckSession(param)
+            Login.sync()
+            var result = await Login.destroy({
+                where: {
+                    id: param.uidd
+                }
+            })
+            resolve(result)
+        } catch(error) { reject(error) }
+    })
+}
 module.exports = {
-    searchUserBy
+    searchUserBy, 
+    deleteById
 }

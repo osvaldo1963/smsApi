@@ -19,18 +19,23 @@ auth.post('/api/1/sms', (req, res) => {
     })
 })
 
-auth.post('/api/1/register', (req, res) => {
+auth.post('/api/1/user/register', (req, res) => {
     var query = req.query
     var param = {
         name        : query.name,       //<<< parameter required
         lastname    : query.lastname,   //<<< parameter required
         email       : query.email,      //<<< parameter required
         phone       : query.phone,      //<<< parameter required
-        pass        : query.pass,       //<<< parameter required
+        //pass        : query.pass,       //<<< parameter required
         programid   : query.program,    //<<< parameter required
         departmentid: query.department, //<<< parameter required
         type        : query.type        //<<< parameter required
     }
+    console.log(query.pass)
+    if(query.pass != undefined) {
+        param["pass"] = query.pass
+    }
+    console.log(param)
     SignUp(param)
     .then((user) => {
         res.status(200).send({
