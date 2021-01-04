@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { CreateDeparment, FetchDeparment } = require('./Tools/Deparment')
+const { CreateDeparment, FetchDeparment, FetchProgramyId } = require('./Tools/Deparment')
 const department    = Router()
 
 department.post('/api/1/deparment/create', (req, res) =>{
@@ -57,6 +57,31 @@ department.post('/api/1/deparment/byid', (req, res) =>{
         departmentid: query.departmentid
     }
     FetchDeparment(paramenters)
+    .then((deparment) => {
+        res.status(200).send({
+            code   : 200, 
+            message: "deparment fetch", 
+            deparment: deparment
+        })
+    })
+    .catch((error) => {
+        res.status(500).send({
+            code   : 500, 
+            message: "deparment fetch error "+error.toString(), 
+            deparment: null
+        })
+    })
+})
+
+department.post('/api/1/deparment/programid', (req, res) => {
+    var query = req.query
+    var paramenters = {
+        session: query.session, 
+        userid: query.userid,
+        id: query.id
+    }
+    
+    FetchProgramyId(paramenters)
     .then((deparment) => {
         res.status(200).send({
             code   : 200, 

@@ -1,6 +1,20 @@
 const Department = require('../Models/Deparments')
 const { CheckSession } = require('./Auth')
 
+const FetchProgramyId = (param) => {
+    return new Promise(async(resolve, reject) => {
+        try {
+            await CheckSession(param)
+            Department.sync()
+            var deparments = await Department.findAll({
+                where: {
+                    program_id: param.id
+                }
+            })
+            resolve(deparments)
+        } catch(error) { reject(error) }
+    })
+}
 const FetchDepartmentyId = (param) => {
     return new Promise(async(resolve, reject) => {
         try {
@@ -12,7 +26,7 @@ const FetchDepartmentyId = (param) => {
             resolve(deparments)
         } catch(error) { reject(error) }
     })
-}
+} 
 const FetchDeparment = (param) => {
     return new Promise(async(resolve, reject) => {
         try {
@@ -51,5 +65,6 @@ const CreateDeparment = (param) => {
 module.exports = {
     FetchDeparment, 
     CreateDeparment, 
-    FetchDepartmentyId
+    FetchDepartmentyId, 
+    FetchProgramyId
 }
