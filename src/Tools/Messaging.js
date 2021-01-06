@@ -1,7 +1,7 @@
 const { CheckSession } = require('./Auth')
 
-const accountid = 'ACb2affec622b5c309576aa02b7eaa7edd'
-const authtoken = 'ae6ec594146859c7b72ff01ce2148364'
+const accountid = '**********************************'
+const authtoken = '**********************************'
 const client    = require('twilio')(accountid, authtoken)
 
 const sendtext = (cell, text) => {
